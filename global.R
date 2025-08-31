@@ -20,3 +20,7 @@ theme <- create_theme(
     info = "#E4E4E4"
   )
 )
+
+df_piza <- gt::pizzaplace %>% 
+  mutate(date_sold = readr::parse_date(date)) %>% 
+  select(-c("date", "time"))

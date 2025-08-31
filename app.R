@@ -8,34 +8,14 @@ source("server/server_filtered.R")
 source("server/server_alarms.R")
 
 
-# ui <- page_sidebar(
-#   theme = shinytheme("flatly"),
-#   
-#   # App title
-#   title ="Mango Supply Chain Shiny App",
-#   sidebar = sidebar(
-#     varSelectInput(
-#       "color_by",
-#       "Color by",
-#       penguins[c("species", "island", "sex")],
-#       selected = "species"
-#     )
-#   ),
-#   navset_card_underline(
-#     title = "Histograms by species",
-#     nav_panel("Bill Length", plotOutput("bill_length")),
-#     nav_panel("Bill Depth", plotOutput("bill_depth")),
-#     nav_panel("Body Mass", plotOutput("body_mass"))
-#   )
-#   
-#   
-# )
+
 
 ui <- page_navbar(
+  theme = bs_theme(5, "minty"),
+  navbar_options = list(class = "bg-primary", theme = "dark"),
   title = "Mango Supply Chain Shiny App",
-  navbar_options = navbar_options(bg = "#2D89C8" ),
   sidebar = sidebar(
-    h5("Data Filtering Options"),  
+    h5("Data Filtering Options"),
     varSelectInput(
       "color_by",
       "Color by",
@@ -43,6 +23,7 @@ ui <- page_navbar(
       selected = "species"
     )
   ),
+  nav_spacer(),
   alarms_panel,
   filtered_panel,
   plot_panel,
